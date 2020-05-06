@@ -87,9 +87,9 @@ def main():
     errorRate = 5
     # 用户名、密码
     # 用户名为空则不登录
-    username = "游客133853633"
+    username = ""
     # 未设置密码请留空
-    password = "abc123"
+    password = ""
     # 打字速度，越低越快
     # 打榜建议0.052左右
     timeSleep = 0.0520
