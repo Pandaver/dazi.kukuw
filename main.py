@@ -102,5 +102,3 @@ def main():
 if __name__ == '__main__':
     main()
 
-# 明日工作
-# 关打字轨迹
