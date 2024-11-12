@@ -14,38 +14,38 @@ def openPage(url, myTime, errorRate, timeSleep, username, password, desiredWPM):
 
     # 登陆
     if username.strip() != '':
-        name = driver.find_element_by_id("name")
+        name = driver.find_element("id", "name")
         name.click()
-        newUsername = driver.find_element_by_id("new_username")
+        newUsername = driver.find_element("id","new_username")
         newUsername.send_keys(username)
-        driver.find_element_by_link_text("修改").click()
+        driver.find_element("link text", "修改").click()
         if password.strip() != '':
-            passw = driver.find_element_by_name("pass")
+            passw = driver.find_element("name","pass")
             passw.send_keys(password)
-            driver.find_element_by_class_name("login_button").click()
+            driver.find_element("class name","login_button").click()
             clickAccept = driver.switch_to.alert
             clickAccept.accept()
     # 随机选择一片文章
-    # randomButtom = driver.find_element_by_id('suiji_a')
+    # randomButtom = driver.find_element("id",'suiji_a')
     # randomButtom.click()
 
     # 打字时间
-    wastTime = driver.find_element_by_id('time')
+    wastTime = driver.find_element("id",'time')
     wastTime.clear()
     wastTime.send_keys(myTime)
     # 点击打字按钮
-    clickTest = driver.find_element_by_name('start_button')
+    clickTest = driver.find_element("name",'start_button')
     clickTest.click()
     # 进入打字页面
 
     for x in range(0, 30):
         divId = 'i_' + str(x)
         # 选中对应序号的一组元素
-        dataString = driver.find_element_by_id(divId)
+        dataString = driver.find_element("id",divId)
         # 使用空格进行文本分词
         contentList = dataString.text.split(" ")
         # 选中输入框
-        inputClick = dataString.find_element_by_class_name('typing')
+        inputClick = dataString.find_element("class name",'typing')
         # 遍历每个单词
         for y in contentList:
             for a in y:
@@ -64,7 +64,7 @@ def openPage(url, myTime, errorRate, timeSleep, username, password, desiredWPM):
 
             # 速度调整，使WPM无限贴近desiredWPM
             try:
-                wpmText = driver.find_element_by_class_name("sudu").text
+                wpmText = driver.find_element("class name","sudu").text
             except:
                 print()
             else:
@@ -82,7 +82,7 @@ def main():
     # 打字网站
     url = "https://dazi.kukuw.com/"
     # 打字时间，单位分钟，请填入整数
-    myTime = 1
+    myTime = 2
     # 错误率，百分之五，调低容易被检测
     errorRate = 5
     # 用户名、密码
@@ -101,4 +101,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
